@@ -14,4 +14,4 @@ const artSchema = new Schema({
 
 const Art = model('Art', artSchema);
 
-module.export = Art;
+module.exports = Art;

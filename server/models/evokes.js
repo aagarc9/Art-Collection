@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 
-const tagSchema = new Schema({
+const evokeSchema = new Schema({
     name: {
         type: String,
         unique: true,
@@ -8,6 +8,6 @@ const tagSchema = new Schema({
     },
 });
 
-const Tag = model('Tag', tagSchema);
+const Evoke = model('Evoke', evokeSchema);
 
-module.export = Tag;
+module.exports = Evoke;
