@@ -1,10 +1,29 @@
 const { Schema, model } = require('mongoose');
 
 const artSchema = new Schema({
-    name: {
+    title: {
         type: String,
         unique: true,
         trim: true,
+    },
+
+    image: {
+        type: String
+    },
+
+    likesCount: {
+        type: Number,
+        min: 0
+    },
+
+    viewsCount: {
+        type: Number,
+        min: 0
+    },
+
+    evokesCount: {
+        type: Number,
+        min: 0
     },
 
     description: {
@@ -14,4 +33,4 @@ const artSchema = new Schema({
 
 const Art = model('Art', artSchema);
 
-module.export = Art;
+module.exports = Art;
