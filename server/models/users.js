@@ -20,6 +20,10 @@ const UserSchema = new Schema({
         type: String,
         required: true,
         minlength: 4,
+    },
+
+    artwork: {
+        ref: 'Art'
     }
 });
 
