@@ -12,10 +12,15 @@ const typeDefs = gql`
         _id: ID!
         title: String!
         image: String
-        description: String
+        description: String      
         likesCount: Int
         viewsCount: Int
         evokesCount: Int
+    }
+
+    type Comment {
+        _id: ID!
+        comment: String!
     }
 
     type Auth {
@@ -30,6 +35,10 @@ const typeDefs = gql`
     type Mutation {
         login(email: String!, password: String!): Auth
         addUser(username: String!, email: String!, password: String!): Auth
+        addArtwork(title: String!, image: String!, description: String!, likesCount: Int!, viewsCount: Int!, evokesCount: Int!): User
+        removeArtwork(artworkId: ID!): User
+        addComment(comment: String!): Art
+        removeComment(commentId: ID!): Art
     }
 `;
 

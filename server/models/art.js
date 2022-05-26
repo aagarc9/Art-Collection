@@ -15,6 +15,16 @@ const artSchema = new Schema({
         type: String,
     },
 
+    owner: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    },
+
+    submittedAt: {
+        type: Date,
+        default: Date.now
+    },
+
     likesCount: {
         type: Number,
         min: 0
@@ -28,6 +38,11 @@ const artSchema = new Schema({
     evokesCount: {
         type: Number,
         min: 0
+    },
+
+    comments: {
+        type: Schema.Types.ObjectId,
+        ref: 'Comment'
     }
 });
 
