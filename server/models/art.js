@@ -11,6 +11,10 @@ const artSchema = new Schema({
         type: String
     },
 
+    description: {
+        type: String,
+    },
+
     likesCount: {
         type: Number,
         min: 0
@@ -24,11 +28,7 @@ const artSchema = new Schema({
     evokesCount: {
         type: Number,
         min: 0
-    },
-
-    description: {
-        type: String,
-    },
+    }
 });
 
 const Art = model('Art', artSchema);
