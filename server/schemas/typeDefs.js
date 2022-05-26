@@ -18,6 +18,11 @@ const typeDefs = gql`
         evokesCount: Int
     }
 
+    type Comment {
+        _id: ID!
+        comment: String!
+    }
+
     type Auth {
         token: ID!
         user: User
@@ -25,8 +30,6 @@ const typeDefs = gql`
 
     type Query {
         me: User
-        Art: [Art]
-        Comment: [Comment]
     }
 
     type Mutation {
