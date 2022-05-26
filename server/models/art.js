@@ -11,6 +11,20 @@ const artSchema = new Schema({
         type: String
     },
 
+    description: {
+        type: String,
+    },
+
+    owner: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    },
+
+    submittedAt: {
+        type: Date,
+        default: Date.now
+    },
+
     likesCount: {
         type: Number,
         min: 0
@@ -26,9 +40,10 @@ const artSchema = new Schema({
         min: 0
     },
 
-    description: {
-        type: String,
-    },
+    comments: {
+        type: Schema.Types.ObjectId,
+        ref: 'Comment'
+    }
 });
 
 const Art = model('Art', artSchema);
