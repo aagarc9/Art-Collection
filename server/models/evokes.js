@@ -6,6 +6,11 @@ const evokeSchema = new Schema({
         unique: true,
         trim: true,
     },
+
+    artLink: {
+        type: Schema.Types.ObjectId,
+        ref: 'Art'
+    }
 });
 
 const Evoke = model('Evoke', evokeSchema);
