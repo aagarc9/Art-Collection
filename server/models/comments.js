@@ -9,6 +9,11 @@ const commentSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
+
+    artLink: {
+        type: Schema.Types.ObjectId,
+        ref: 'Art'
+    },
     
     submittedAt: {
         type: Date,

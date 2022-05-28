@@ -21,6 +21,7 @@ const resolvers = {
     },
 
     Mutation: {
+        // Add User
         addUser: async (parent, args) => {
             const user = await User.create(args);
             const token = signToken(user);
@@ -28,6 +29,7 @@ const resolvers = {
             return { token, user };
         },
 
+        // Login
         login: async (parent, { email, password }) => {
             const user = await User.findOne({ email });
 
@@ -45,6 +47,7 @@ const resolvers = {
             return { token, user };
         },
 
+        // Related to Artwork
         addArtwork: async (parent, { artData }, context) => {
             if (context.user) {
                 const updatedUser = await User.findByIdAndUpdate(
@@ -73,6 +76,7 @@ const resolvers = {
             throw new AuthenticationError('Need to be logged in to remove artwork!');
         },
 
+        // Related to Comments
         addComment: async (parent, { commentData }, context) => {
             if (context.user) {
                 const updatedArt = await Art.findByIdAndUpdate(
