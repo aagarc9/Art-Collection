@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 
 const evokeSchema = new Schema({
-    name: {
+    emotion: {
         type: String,
         unique: true,
         trim: true,
