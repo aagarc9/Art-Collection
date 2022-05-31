@@ -35,7 +35,42 @@ const artSchema = new Schema({
         min: 0
     },
 
-    evokesCount: {
+    evokeFunnyCount: {
+        type: Number,
+        min: 0
+    },
+
+    evokeBeautifulCount: {
+        type: Number,
+        min: 0
+    },
+
+    evokeSadCount: {
+        type: Number,
+        min: 0
+    },
+
+    evokeWholesomeCount: {
+        type: Number,
+        min: 0
+    },
+
+    evokeMysteriousCount: {
+        type: Number,
+        min: 0
+    },
+
+    evokeThoughtfulCount: {
+        type: Number,
+        min: 0
+    },
+
+    evokeInspiringCount: {
+        type: Number,
+        min: 0
+    },
+
+    evokeCalmingCount: {
         type: Number,
         min: 0
     },

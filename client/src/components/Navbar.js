@@ -17,6 +17,8 @@ const AppNavbar = () => {
           <Navbar.Brand as={Link} to='/'>
             EVOKE
           </Navbar.Brand>
+          <Nav.Link as={Link} to='/profile'> Profile
+                  </Nav.Link>
           <Navbar.Toggle aria-controls='navbar' />
           <Navbar.Collapse id='navbar'>
             <Nav className='ml-auto'>

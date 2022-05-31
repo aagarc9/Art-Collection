@@ -1,6 +1,8 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
+const artSchema = require('./art')
+
 const userSchema = new Schema({
     username: {
         type: String,
@@ -22,10 +24,7 @@ const userSchema = new Schema({
         minlength: 4,
     },
 
-    artwork: {
-        type: Schema.Types.ObjectId,
-        ref: 'Art'
-    }
+    artwork: [artSchema]
 });
 
 userSchema.pre('save', async function (next) {
