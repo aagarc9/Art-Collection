@@ -5,7 +5,8 @@ const typeDefs = gql`
         _id: ID!
         username: String!
         email: String!
-        art: [Art]
+        password: String!
+        artwork: [Art]
     }
 
     type Art {
@@ -13,16 +14,24 @@ const typeDefs = gql`
         title: String!
         image: String
         owner: [User]
-        description: String
-        comment: [Comment]      
+        description: String     
         likesCount: Int!
         viewsCount: Int!
-        evokesCount: Int!
+        evokeFunnyCount: Int!
+        evokeBeautifulCount: Int!
+        evokeSadCount: Int!
+        evokeWholesomeCount: Int!
+        evokeMysteriousCount: Int!
+        evokeThoughtfulCount: Int!
+        evokeCalmingCount: Int!
+        comments: [Comment]!
     }
 
     type Comment {
         _id: ID!
-        comment: String!
+        commentText: String!
+        commentAuthor: String!
+        submittedAt: String
     }
 
     type Auth {
@@ -36,24 +45,56 @@ const typeDefs = gql`
     }
 
     type Query {
-        me: [User]!
-        comments: [Comment]!
-        art: [Art]!
+        me: User
         users: [User]!
-        evokes: [Evoke]!
+        user(username: String!): User
+        art(username: String!): [Art]!
+        artwork(artId: ID!): Art
+        comment(commentId: ID!): Art
     }
 
     type Mutation {
-        login(email: String!, password: String!): Auth
+        addUser(
+            username: String!, 
+            email: String!, 
+            password: String!
+        ): Auth
 
-        addUser(username: String!, email: String!, password: String!): Auth
-        addArtwork(title: String!, image: String!, owner: String!, description: String!, likesCount: Int!, viewsCount: Int!, evokesCount: Int!): User
-        addComment(comment: String!, owner: String!): Art
-        addEvoke(emotion: String!): Art
+        login(
+            email: String!, 
+            password: String!
+        ): Auth
 
-        removeArtwork(artworkId: ID!): User
-        removeComment(commentId: ID!): Comment
-        removeEvoke(evokeId: ID!): Evoke
+        addArtwork(
+            title: String!, 
+            image: String!, 
+            owner: String!, 
+            description: String!, 
+            likesCount: Int!, 
+            viewsCount: Int!, 
+            evokeFunnyCount: Int!
+            evokeBeautifulCount: Int!
+            evokeSadCount: Int!
+            evokeWholesomeCount: Int!
+            evokeMysteriousCount: Int!
+            evokeThoughtfulCount: Int!
+            evokeCalmingCount: Int!
+        ): User
+
+        addComment(
+            artId: ID!, 
+            commentText: String!, 
+            owner: String!
+        ): Art
+
+        removeArtwork(
+            artId: ID!
+        ): User
+        
+        removeComment(
+            artId: ID!, 
+            commentId: ID!
+        ): Art
     }
 `;
 
