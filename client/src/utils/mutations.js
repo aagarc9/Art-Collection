@@ -23,3 +23,37 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+export const SAVE_ART = gql`
+  mutation saveART($artData: ArtInput!) {
+    saveART(artData: $artData) {
+      _id
+      username
+      email
+      artwork {
+        artId
+        owner
+        image
+        description
+        title
+      }
+    }
+  }
+`;
+
+export const REMOVE_ART = gql`
+  mutation removeART($artId: ID!) {
+    removeART(artId: $artId) {
+      _id
+      username
+      email
+      artwork {
+        artId
+        owner
+        image
+        description
+        title
+      }
+    }
+  }
+`;
