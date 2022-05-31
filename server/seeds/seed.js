@@ -17,7 +17,6 @@ db.once('open', async () => {
 
     await User.create(userData);
     await Art.create(artData);
-    await Comment.create(commentData);
 
     console.log('Done seeding!');
     process.exit(0);
