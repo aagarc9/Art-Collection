@@ -1,13 +1,24 @@
 const db = require('../config/connection');
-const { User } = require('../models');
+const { User, Art, Evoke, Comment } = require('../models');
+
 const userData = require('./userData.json');
+const artData = require('./artData.json');
+const commentData = require('./commentData.json');
 
 db.once('open', async () => {
   try {
-    await User.deleteMany({});
-    await User.create(userData);
+    await User.deleteMany({})
+    await Art.deleteMany({});
+    await Comment.deleteMany({});
 
-    console.log('all done!');
+    // const users = User.insertMany(userData);
+    // const art = Art.insertMany(artData);
+    // const comment = Comment.insertMany(commentData);
+
+    await User.create(userData);
+    await Art.create(artData);
+
+    console.log('Done seeding!');
     process.exit(0);
   } catch (err) {
     throw err;

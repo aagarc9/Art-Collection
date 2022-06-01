@@ -22,10 +22,12 @@ const userSchema = new Schema({
         minlength: 4,
     },
 
-    artwork: {
-        type: Schema.Types.ObjectId,
-        ref: 'Art'
-    }
+    artwork: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Art',
+        },
+    ]
 });
 
 userSchema.pre('save', async function (next) {

@@ -11,3 +11,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.tile {
+  border-radius: 0.1rem;
+  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.2);
+  cursor:default;
+  transition: 0.2s;
+}
+
+.tile:hover {
+  transform: translateY(-1%);
+  box-shadow: 0 4rem 8rem rgba(0, 0, 0, 0.5);
+}
+
+.tile-img {
+  border-radius: 0.1rem
+}

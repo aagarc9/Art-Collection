@@ -3,8 +3,9 @@ const { gql } = require('apollo-server-express');
 const typeDefs = gql`
     type User {
         _id: ID!
-        name: String!
-        email: String
+        username: String!
+        email: String!
+        password: String!
         artwork: [Art]
     }
 
@@ -12,33 +13,88 @@ const typeDefs = gql`
         _id: ID!
         title: String!
         image: String
-        description: String      
-        likesCount: Int
-        viewsCount: Int
-        evokesCount: Int
+        owner: [User]
+        description: String     
+        likesCount: Int!
+        viewsCount: Int!
+        evokeFunnyCount: Int!
+        evokeBeautifulCount: Int!
+        evokeSadCount: Int!
+        evokeWholesomeCount: Int!
+        evokeMysteriousCount: Int!
+        evokeThoughtfulCount: Int!
+        evokeCalmingCount: Int!
+        comments: [Comment]!
     }
 
     type Comment {
         _id: ID!
-        comment: String!
+        commentText: String!
+        commentAuthor: String!
+        submittedAt: String
     }
 
     type Auth {
         token: ID!
-        user: User
+        user: User!
+    }
+
+    type Evoke {
+        emotion: String!
+        art: [Art]
     }
 
     type Query {
         me: User
+        users: [User]!
+        user(username: String!): User
+        art(username: String!): [Art]!
+        artwork(artId: ID!): Art
+        comment(commentId: ID!): Art
     }
 
     type Mutation {
-        login(email: String!, password: String!): Auth
-        addUser(username: String!, email: String!, password: String!): Auth
-        addArtwork(title: String!, image: String!, description: String!, likesCount: Int!, viewsCount: Int!, evokesCount: Int!): User
-        removeArtwork(artworkId: ID!): User
-        addComment(comment: String!): Art
-        removeComment(commentId: ID!): Art
+        addUser(
+            username: String!, 
+            email: String!, 
+            password: String!
+        ): Auth
+
+        login(
+            email: String!, 
+            password: String!
+        ): Auth
+
+        addArtwork(
+            title: String!, 
+            image: String!, 
+            owner: String!, 
+            description: String!, 
+            likesCount: Int!, 
+            viewsCount: Int!, 
+            evokeFunnyCount: Int!
+            evokeBeautifulCount: Int!
+            evokeSadCount: Int!
+            evokeWholesomeCount: Int!
+            evokeMysteriousCount: Int!
+            evokeThoughtfulCount: Int!
+            evokeCalmingCount: Int!
+        ): User
+
+        addComment(
+            artId: ID!, 
+            commentText: String!, 
+            owner: String!
+        ): Art
+
+        removeArtwork(
+            artId: ID!
+        ): User
+        
+        removeComment(
+            artId: ID!, 
+            commentId: ID!
+        ): Art
     }
 `;
 
