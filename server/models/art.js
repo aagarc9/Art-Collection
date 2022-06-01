@@ -79,10 +79,27 @@ const artSchema = new Schema({
         min: 0
     },
 
-    comments: {
-        type: Schema.Types.ObjectId,
-        ref: 'Comment'
-    }
+    comments: [
+        {
+            commentText: {
+            type: String,
+            required: true,
+            minlength: 1,
+            maxlength: 280,
+            },
+
+            commentAuthor: {
+            type: String,
+            required: true,
+            },
+
+            submittedAt: {
+            type: Date,
+            default: Date.now,
+            get: (timestamp) => dateFormat(timestamp),
+            },
+        },
+    ],
 });
 
 const Art = model('Art', artSchema);
