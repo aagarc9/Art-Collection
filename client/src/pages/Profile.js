@@ -2,7 +2,7 @@ import { useMutation, useQuery } from "@apollo/client";
 import React from "react";
 import { REMOVE_ART, SAVE_ART } from "../utils/mutations";
 import { QUERY_ME } from "../utils/queries";
-
+import UploadArt from "../component/UploadArt"
 
 
 
@@ -15,6 +15,9 @@ const Profile = () => {
     return (
     <div>
         Profile Here!
+        <UploadArt>
+            
+        </UploadArt>
     </div>   
     );
   };

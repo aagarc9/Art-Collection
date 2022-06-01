@@ -40,10 +40,6 @@ const client = new ApolloClient({
 
 function App() {
   return (
-    // <div className="App">
-    //     <h1>Testing, Hello World!</h1>
-    //     {<Home />}
-    // </div>
         <ApolloProvider client={client}>
         <Router>
           <>
