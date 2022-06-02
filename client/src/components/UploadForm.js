@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 import { Form, Button } from 'react-bootstrap';
 import { beginAddPhoto } from '../actions/photos';
 
@@ -69,4 +69,6 @@ const mapStateToProps = (state) => ({
   errors: state.errors || {}
 });
 
-export default connect(mapStateToProps)(UploadForm);
+// export default connect(mapStateToProps)(UploadForm);
+
+export default UploadForm
