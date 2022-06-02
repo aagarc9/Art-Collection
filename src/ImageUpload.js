@@ -21,18 +21,18 @@ const ImageUpload = ({ username }) => {
     uploadTask.on(
       "state_changed",
       (snapshot) => {
-        // progress function ... shows the progression of the uploading process - kyle 
+        // progress function ...
         const progress = Math.round(
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100
         );
         setProgress(progress);
       },
       (error) => {
-        // Error function ... anything that is going wrong with the code this will be the error function - kyle 
+        // Error function ...
         console.log(error);
       },
       () => {
-        // complete function - getting the download link
+        // complete function ...
         storage
           .ref("images")
           .child(image.name)
@@ -40,12 +40,11 @@ const ImageUpload = ({ username }) => {
           .then((url) => {
             setUrl(url);
 
-            // post image inside database in firebase dd
+            // post image inside db
             db.collection("posts").add({
               imageUrl: url,
               caption: caption,
               username: username,
-              //timestamp allows  for the time of the server upload no matter the location 
               timestamp: firebase.firestore.FieldValue.serverTimestamp(),
             });
 
