@@ -16,7 +16,7 @@ export default function Tiles() {
         sx={{ width: 1, height: 1 }} cols={'4'} gap={1} margin={1} padding={1}>
         {itemData.map((item) => (
         <Grid Item className='tile'>
-          <a href='item.img' target="_blank">
+          <a href={`}${item.img}`} target="_blank">
           <img className='tile-img'
             src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
             srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
