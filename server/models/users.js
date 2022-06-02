@@ -1,4 +1,6 @@
-const { Schema, model } = require('mongoose');
+const mongoose = require('mongoose');
+
+const { Schema } = mongoose;
 const bcrypt = require('bcrypt');
 
 const userSchema = new Schema({
@@ -22,19 +24,12 @@ const userSchema = new Schema({
         minlength: 4,
     },
 
-<<<<<<< HEAD
-    artwork: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Art'
-    }]
-=======
     artwork: [
         {
             type: Schema.Types.ObjectId,
             ref: 'Art',
         },
     ]
->>>>>>> 21adf7c188cfa2ebcf0e85fd28d8e65fc6d7ac27
 });
 
 userSchema.pre('save', async function (next) {
@@ -50,6 +45,6 @@ userSchema.methods.isCorrectPassword = async function (password) {
     return bcrypt.compare(password, this.password);
 };
 
-const User = model('User', userSchema);
+const User = mongoose.model('User', userSchema);
 
 module.exports = User

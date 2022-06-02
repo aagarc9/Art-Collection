@@ -15,6 +15,7 @@ import { Switch } from 'react-router-dom';
 //IMPORT PAGES
 import Home from './pages/Home'
 import Profile from './pages/Profile';
+import Art from './pages/Art';
 
 // IMPORT COMPONENTS
 import Navbar from './components/Navbar';
@@ -47,6 +48,7 @@ function App() {
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/profile" component={Profile} />
+              <Route exact path="/art" component={Art} />
               <Route render={() => <h1 className="display-2">Wrong page!</h1>} />
             </Switch>
           </>
