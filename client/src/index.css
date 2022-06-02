@@ -27,3 +27,34 @@ code {
 .tile-img {
   border-radius: 0.1rem
 }
+
+/* art page */
+.artpage {
+  text-align: center;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.title-art {
+  margin: 20px;
+}
+.artContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding: 20px;
+  color: azure;
+  background-color: rgb(92, 81, 81);
+}
+
+.artContainer div {
+  border: 1px solid palevioletred;
+  padding: 10px;
+}
+
+.art-img {
+  margin: auto;
+  width: 380px;
+  height: 380px;
+}
