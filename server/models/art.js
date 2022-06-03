@@ -1,6 +1,10 @@
 const { Schema, model } = require('mongoose');
 
 const artSchema = new Schema({
+    artId: {
+        type: String,
+        required: true,
+    },
     title: {
         type: String,
         unique: true,
