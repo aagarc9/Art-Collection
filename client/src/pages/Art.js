@@ -20,15 +20,14 @@ const ArtPage = () => {
           </a>
         How does this artwork make you feel?
         <div class="artContainer">
-        
-        Likes: {artObject.likesCount}
-        Views: {artObject.viewsCount}
-        Funny: {artObject.evokeFunnyCount}
-        Beautiful: {artObject.evokeBeautifulCount}
-        Sad: {artObject.evokeSadCount}
-        Wholesome: {artObject.evokeWholesomeCount}
-        Mysterious: {artObject.evokeMysteriousCount}
-        Thoughtful: {artObject.evokeThoughtfulCount}
+         {artObject.likesCount} People Liked<br></br>
+         {artObject.viewsCount} Views <br></br>
+         {artObject.evokeFunnyCount} Laughs <br></br>
+         {artObject.evokeBeautifulCount} People thought it was Beautiful <br></br>
+         {artObject.evokeSadCount} People felt Sad<br></br>
+         {artObject.evokeWholesomeCount} Wholesome Likes <br></br>
+         {artObject.evokeMysteriousCount} People thought it was Mysterious<br></br>
+         {artObject.evokeThoughtfulCount} Thoughtful likes<br></br>
         </div>
     </div>   
     );
