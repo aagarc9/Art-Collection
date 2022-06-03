@@ -38,19 +38,15 @@ code {
 
 .title-art {
   margin: 20px;
+  padding: 20px;
 }
 .artContainer {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: center;
   padding: 20px;
   color: azure;
   background-color: rgb(92, 81, 81);
-}
-
-.artContainer div {
-  border: 1px solid palevioletred;
-  padding: 10px;
 }
 
 .art-img {
