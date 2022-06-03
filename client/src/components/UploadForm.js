@@ -70,3 +70,5 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps)(UploadForm);
+
+//export default UploadForm

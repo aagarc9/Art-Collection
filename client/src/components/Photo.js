@@ -6,7 +6,7 @@ const Photo = ({ id }) => {
     <Card className="photo">
       <Card.Img
         variant="top"
-        src={`http://localhost:3001/photos/${id}`}
+        src={`http://localhost:3000/photos/${id}`}
         alt="Photo"
       />
     </Card>
