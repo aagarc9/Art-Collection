@@ -3,7 +3,7 @@ const { gql } = require('apollo-server-express');
 const typeDefs = gql`
     type User {
         _id: ID!
-        username: String!
+        username: String
         email: String!
         password: String!
         artwork: [Art]
@@ -13,8 +13,9 @@ const typeDefs = gql`
         _id: ID!
         title: String
         image: String
-        owner: [User]
-        description: String     
+        owner: User
+        description: String
+        submittedAt: String     
         likesCount: Int
         viewsCount: Int
         evokeFunnyCount: Int
@@ -39,17 +40,12 @@ const typeDefs = gql`
         user: User!
     }
 
-    type Evoke {
-        emotion: String!
-        art: [Art]
-    }
-
     type Query {
         me: User
-        users: [User]!
+        users: [User]
         user(username: String!): User
-        art(username: String!): [Art]!
-        artwork(artId: ID!): Art
+        multipleArt(username: String!): [Art]
+        singleArt(artId: ID!): Art
         comment(commentId: ID!): Art
     }
 
@@ -65,7 +61,7 @@ const typeDefs = gql`
             password: String!
         ): Auth
 
-        ArtInput(
+        saveART(
             title: String, 
             image: String, 
             owner: String, 
@@ -79,12 +75,11 @@ const typeDefs = gql`
             evokeMysteriousCount: Int
             evokeThoughtfulCount: Int
             evokeCalmingCount: Int
-        ): Art
+        ): User
 
         addComment(
-            artId: ID, 
-            commentText: String!, 
-            owner: String!
+            artId: ID!, 
+            commentText: String, 
         ): Art
 
         removeART(
@@ -92,7 +87,7 @@ const typeDefs = gql`
         ): User
         
         removeComment(
-            artId: ID!, 
+            artId: ID!
             commentId: ID!
         ): Art
     }

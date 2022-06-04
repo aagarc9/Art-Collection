@@ -14,16 +14,43 @@ code {
 
 .tile {
   border-radius: 0.1rem;
-  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
   cursor:default;
   transition: 0.2s;
 }
 
 .tile:hover {
   transform: translateY(-1%);
-  box-shadow: 0 4rem 8rem rgba(0, 0, 0, 0.5);
+  box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.5);
 }
 
 .tile-img {
   border-radius: 0.1rem
+}
+
+/* art page */
+.artpage {
+  text-align: center;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.title-art {
+  margin: 20px;
+  padding: 20px;
+}
+.artContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 20px;
+  color: azure;
+  background-color: rgb(92, 81, 81);
+}
+
+.art-img {
+  margin: auto;
+  width: 380px;
+  height: 380px;
 }

@@ -10,8 +10,11 @@ const resolvers = {
 
     Query: {
         me: async (parent, args, context) => {
+            console.log('QUERY me resolver ran')
             if (context.user) {
-                return User.findOne({ _id:context.user._id }).populate('art')
+              const userData = await User.findOne({ _id: context.user._id }).select('-__v -password')
+        
+              return userData;
             }
 
             throw new AuthenticationError('Error logging in! ¯\_(ツ)_/¯')
@@ -25,24 +28,17 @@ const resolvers = {
             return User.findOneAndDelete( { username }).populate('art');
         },
 
-        art: async (parent, { username }) => {
+        multipleArt: async (parent, { username }) => {
             const params = username ? { username } : {};
             return Art.find(params).sort({ submittedAt: -1 });
         },
 
-        artwork: async (parent, { artId }) => {
+        singleArt: async (parent, { artId }) => {
             return Art.findOne({ _id: artId });
         }
     },
 
     Mutation: {
-        // Add User
-        // addUser: async (parent, args) => {
-        //     const user = await User.create(args);
-        //     const token = signToken(user);
-
-        //     return { token, user };
-        // },
         addUser: async (parent, { username, email, password }) => {
             const user = await User.create({ username, email, password });
             const token = signToken(user);
@@ -69,20 +65,21 @@ const resolvers = {
         },
 
         // Related to Artwork
-        ArtInput: async (parent, { artData }, context) => {
+        saveART: async (parent, { title, image, description }, context) => {
             if (context.user) {
                 const artwork = await Art.create({
                     title,
                     image,
                     description,
-                    owner: context.user.username
+                    owner: context.user._id
                 });
 
                 await User.findOneAndUpdate(
                     { _id: context.user._id },
-                    { $addToSet: { art: Art._id } }
+                    { $addToSet: { art: artwork._id } }
                 );
-
+                
+                console.log('Artwork added')
                 return artwork;
             }
 
@@ -93,14 +90,15 @@ const resolvers = {
             if (context.user) {
                 const updatedArtwork = await Art.findOneAndDelete({
                     _id: artId,
-                    owner: context.user.username,
+                    owner: context.user._id,
                 });
 
                 await User.findOneAndUpdate(
                     { _id: context.user._id },
-                    { $pull: { art: Art._id }}
+                    { $pull: { art: updatedArtwork._id }}
                 );
-
+                
+                console.log('Artwork deleted')
                 return updatedArtwork;
             }
 
@@ -122,15 +120,21 @@ const resolvers = {
 
         removeComment: async (parent, { artId, commentId }, context) => {
             if (context.user) {
-                return Art.findOneAndUpdate(
-                    { _id: artId },
-                    { $pull: { comments: { _id: commentId, commentAuthor: context.user.username } } },
-                    { new: true }
-                );
+              return Art.findOneAndUpdate(
+                { _id: artId },
+                {
+                  $pull: {
+                    comments: {
+                      _id: commentId,
+                      commentAuthor: context.user.username,
+                    },
+                  },
+                },
+                { new: true }
+              );
             }
-
-            throw new AuthenticationError('Need to be logged in to delete comment')
-        }
+            throw new AuthenticationError('You need to be logged in!');
+        },
     },
 };
 
