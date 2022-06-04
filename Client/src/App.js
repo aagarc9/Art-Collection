@@ -243,7 +243,9 @@ function App() {
     </div>
     </Route>
         <Route exact path="/profile" component={Profile}/>
-        <Route exact path="/art" component={Art}/>
+        <Route exact path="/art/:id">
+          <Art />
+        </Route>
     </Switch> 
     </div>
     </Router>
