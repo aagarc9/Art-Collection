@@ -2,6 +2,11 @@
   margin: 0;
 }
 
+.btn__logout {
+  border: #6082a3;
+}
+
+
 .home {
   background-color: #fafafa;
   padding-bottom: 100px;
@@ -106,7 +111,7 @@
 
 .post {
   border: 1px solid lightgray;
-  width: fit-content;
+  /* width: fit-content; */
   margin-bottom: 45px;
   background-color: #ffffff;
   max-width: 500px;
@@ -114,7 +119,8 @@
 
 .post__image {
   width: 100%;
-  object-fit: contain;
+  height: 375px;
+  object-fit: cover;
 }
 
 .post__avatar {
@@ -136,6 +142,15 @@
 
 .post__comments {
   padding: 10px;
+}
+
+.post__comment {
+  padding: 5px;
+}
+
+.post__commentDisp {
+  align-self: flex-end;
+  font-size: .7rem;
 }
 
 .post__caption {

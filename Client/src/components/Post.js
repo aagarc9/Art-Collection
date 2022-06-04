@@ -31,6 +31,7 @@ const Post = forwardRef(
       db.collection("posts").doc(postId).collection("comments").add({
         text: comment,
         username: user.displayName,
+        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
       });
       setComment("");
     };
@@ -53,8 +54,9 @@ const Post = forwardRef(
 
         <div className="post__comments">
           {comments.map((comment) => (
-            <p>
-              <b>{comment.username}</b> {comment.text}
+            <p className="post__comment">
+              <b>{comment.username}</b> {comment.text} 
+               <p className="post__commentDisp">{comment.timestamp ? ((comment.timestamp.toDate().toLocaleTimeString('en-US')) + ' on ' + comment.timestamp.toDate().toDateString()) : ""}</p>
             </p>
           ))}
         </div>

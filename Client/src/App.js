@@ -1,13 +1,20 @@
+//IMPORT DEPENDENCIES
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import Post from "./components/Post";
-import ImageUpload from "./components/ImageUpload";
 import { db, auth } from "./firebase";
 import { Button, Avatar, Modal, Input } from "@mui/material";
 import FlipMove from "react-flip-move";
 import { InstagramEmbed } from "react-social-media-embed";
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { makeStyles } from "@mui/styles";
+
+//IMPORT PAGES
+import Art from "./pages/Art"
+import Profile from "./pages/Profile"
+
+//IMPORT COMPONENTS
+import Post from "./components/Post";
+import ImageUpload from "./components/ImageUpload";
 
 function getModalStyle() {
   const top = 50;
@@ -95,6 +102,8 @@ function App() {
   };
 
   return (
+
+  <Router>
     <div className="home">
       <Modal open={open} onClose={() => setOpen(false)}>
         <div className='home__modal'>
@@ -157,15 +166,23 @@ function App() {
         </div>
       </Modal>
       <div className="home__header">
+        <Link to="/">
         <img
           className="home__headerImage"
           src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Evoke_Logo_for_wikipedia_use.jpg"
           alt=""
         />
+        </Link>
+{/* TEMPORARY LINK TO ART PAGE */}
+        <Link to="/art">
+          ART LINK TEMPORARY
+        </Link>
         {user?.displayName ? (
           <div className="home__headerRight">
+            <Link to="/profile">
             <h2> {user.displayName} </h2>
-            <Button onClick={() => auth.signOut()}>Logout</Button>
+            </Link>
+            <Button className="btn__logout" onClick={() => auth.signOut()}>Logout</Button>
             <Avatar
               className="home__headerAvatar"
               alt={user.displayName}
@@ -179,50 +196,58 @@ function App() {
           </form>
         )}
       </div>
-    
-      <div className="home__posts">
-        <div className="home__postsLeft">
-          <FlipMove>
-            {posts.map(({ id, post }) => (
-              <Post
-                user={user}
-                key={id}
-                postId={id}
-                username={post.username}
-                caption={post.caption}
-                imageUrl={post.imageUrl}
-              />
-            ))}
-          </FlipMove>
-        </div>
-        <div className="home__postsRight">
-          <InstagramEmbed
-            url="https://www.instagram.com/twicetagram/?hl=en"
-            maxWidth={320}
-            hideCaption={false}
-            containerTagName="div"
-            protocol=""
-            injectScript
-            onLoading={() => {}}
-            onSuccess={() => {}}
-            onAfterRender={() => {}}
-            onFailure={() => {}}
-          />
+    <Switch>
+    <Route exact path="/" >
+      <div className="home">
+        <div className="home__posts">
+          <div className="home__postsLeft">
+            <FlipMove>
+              {posts.map(({ id, post }) => (
+                <Post
+                  user={user}
+                  key={id}
+                  postId={id}
+                  username={post.username}
+                  caption={post.caption}
+                  imageUrl={post.imageUrl}
+                />
+              ))}
+            </FlipMove>
+          </div>
+          <div className="home__postsRight">
+            <InstagramEmbed
+              url="https://www.instagram.com/twicetagram/?hl=en"
+              maxWidth={320}
+              hideCaption={false}
+              containerTagName="div"
+              protocol=""
+              injectScript
+              onLoading={() => {}}
+              onSuccess={() => {}}
+              onAfterRender={() => {}}
+              onFailure={() => {}}
+            />
+          </div>
+
         </div>
         <div>        
-      {user?.displayName ? (
-        <div className="home__upload">
-          <ImageUpload username={user.displayName} />
+        {user?.displayName ? (
+          <div className="home__upload">
+            <ImageUpload username={user.displayName} />
+          </div>
+        ) : (
+          <center>
+            <h3>Login to upload</h3>
+          </center>
+        )}
         </div>
-      ) : (
-        <center>
-          <h3>Login to upload</h3>
-        </center>
-      )}
-      </div>
-      </div>
-
     </div>
+    </Route>
+        <Route exact path="/profile" component={Profile}/>
+        <Route exact path="/art" component={Art}/>
+    </Switch> 
+    </div>
+    </Router>
   );
 }
 
