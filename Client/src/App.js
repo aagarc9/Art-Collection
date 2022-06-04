@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import Post from "./Post";
-import ImageUpload from "./ImageUpload";
+import Post from "./components/Post";
+import ImageUpload from "./components/ImageUpload";
 import { db, auth } from "./firebase";
-import { Button, Avatar, makeStyles, Modal, Input } from "@material-ui/core";
+import { Button, Avatar, Modal, Input } from "@mui/material";
 import FlipMove from "react-flip-move";
-import InstagramEmbed from "react-instagram-embed";
+import { InstagramEmbed } from "react-social-media-embed";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { makeStyles } from "@mui/styles";
 
 function getModalStyle() {
   const top = 50;
@@ -19,20 +21,20 @@ function getModalStyle() {
   };
 }
 
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    position: "absolute",
-    width: 400,
-    height: 200,
-    backgroundColor: theme.palette.background.paper,
-    border: "2px solid #000",
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
-  },
-}));
+// const useStyles = makeStyles((theme) => ({
+//   paper: {
+//     position: "absolute",
+//     width: 400,
+//     height: 200,
+//     backgroundColor: theme.palette.background.paper,
+//     border: "2px solid #000",
+//     boxShadow: theme.shadows[5],
+//     padding: theme.spacing(2, 4, 3),
+//   },
+// }));
 
 function App() {
-  const classes = useStyles();
+  // const classes = useStyles();
   const [modalStyle] = useState(getModalStyle);
   const [posts, setPosts] = useState([]);
   const [username, setUsername] = useState("");
@@ -93,13 +95,13 @@ function App() {
   };
 
   return (
-    <div className="app">
+    <div className="home">
       <Modal open={open} onClose={() => setOpen(false)}>
-        <div style={modalStyle} className={classes.paper}>
-          <form className="app__login">
+        <div style={modalStyle} className='modal'>
+          <form className="home__login">
             <center>
               <img
-                className="app__headerImage"
+                className="home__headerImage"
                 src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Evoke_Logo_for_wikipedia_use.jpg"
                 alt=""
               />
@@ -123,11 +125,11 @@ function App() {
       </Modal>
 
       <Modal open={registerOpen} onClose={() => setRegisterOpen(false)}>
-        <div style={modalStyle} className={classes.paper}>
-          <form className="app__login">
+        <div style={modalStyle} className='modal'>
+          <form className="home__login">
             <center>
               <img
-                className="app__headerImage"
+                className="home__headerImage"
                 src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Evoke_Logo_for_wikipedia_use.jpg"
                 alt=""
               />
@@ -154,17 +156,17 @@ function App() {
           </form>
         </div>
       </Modal>
-      <div className="app__header">
+      <div className="home__header">
         <img
-          className="app__headerImage"
+          className="home__headerImage"
           src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Evoke_Logo_for_wikipedia_use.jpg"
           alt=""
         />
         {user?.displayName ? (
-          <div className="app__headerRight">
+          <div className="home__headerRight">
             <Button onClick={() => auth.signOut()}>Logout</Button>
             <Avatar
-              className="app__headerAvatar"
+              className="home__headerAvatar"
               alt={user.displayName}
               src="/static/images/avatar/1.jpg"
             />
@@ -176,9 +178,9 @@ function App() {
           </form>
         )}
       </div>
-
-      <div className="app__posts">
-        <div className="app__postsLeft">
+    
+      <div className="home__posts">
+        <div className="home__postsLeft">
           <FlipMove>
             {posts.map(({ id, post }) => (
               <Post
@@ -192,9 +194,9 @@ function App() {
             ))}
           </FlipMove>
         </div>
-        <div className="app__postsRight">
+        <div className="home__postsRight">
           <InstagramEmbed
-            url="https://www.instagram.com/p/B_uf9dmAGPw/"
+            url="https://www.instagram.com/twicetagram/?hl=en"
             maxWidth={320}
             hideCaption={false}
             containerTagName="div"
@@ -206,10 +208,9 @@ function App() {
             onFailure={() => {}}
           />
         </div>
-      </div>
-
+        <div>        
       {user?.displayName ? (
-        <div className="app__upload">
+        <div className="home__upload">
           <ImageUpload username={user.displayName} />
         </div>
       ) : (
@@ -217,6 +218,9 @@ function App() {
           <h3>Login to upload</h3>
         </center>
       )}
+      </div>
+      </div>
+
     </div>
   );
 }

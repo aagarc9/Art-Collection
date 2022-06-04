@@ -1,0 +1,157 @@
+* {
+  margin: 0;
+}
+
+.home {
+  background-color: #fafafa;
+  padding-bottom: 100px;
+}
+
+.home__login {
+  display: flex;
+  flex-direction: column;
+  height: 250px;
+  justify-content: center;
+  padding: 20px;
+  background-color: white;
+  border: 1px solid lightgray;
+}
+
+.home__loginHome {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 20px;
+  background-color: white;
+  border: 1px solid lightgray;
+}
+
+.home__upload {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: white;
+  border-top: 1px solid lightgray;
+  text-align: center;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.home__headerImage {
+  object-fit: contain;
+  margin: 50px; 
+  height: 50px; 
+}
+
+.home__headerRight {
+  display: flex;
+  align-items: center;
+}
+
+.home__headerRight > p {
+  margin-right: 5px;
+}
+
+.home__headerAvatar {
+  height: 30px !important;
+  width: 30px !important;
+}
+
+.home__header {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  z-index: 1;
+  padding: 20px;
+  background-color: #ffffff;
+  border-bottom: 1px solid lightgray;
+  margin-bottom: 10px;
+}
+
+.home__posts {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  padding: 10px 30px;
+}
+
+.home__postsRight {
+  margin-left: 10px;
+}
+
+.imageupload {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.imageupload__progress {
+  width: 100%;
+}
+
+.imageupload__button {
+  margin: 10px;
+  height: 30px;
+}
+
+.post {
+  border: 1px solid lightgray;
+  width: fit-content;
+  margin-bottom: 45px;
+  background-color: #ffffff;
+  max-width: 500px;
+}
+
+.post__image {
+  width: 100%;
+  object-fit: contain;
+}
+
+.post__avatar {
+  margin-right: 10px;
+}
+
+.post__header {
+  display: flex;
+  align-items: center;
+  text-align: left;
+  padding: 10px;
+  border-bottom: 1px solid lightgray;
+}
+
+.post__text {
+  padding: 10px;
+  text-align: left;
+}
+
+.post__comments {
+  padding: 10px;
+}
+
+.post__caption {
+  font-weight: normal;
+}
+
+.post__commentBox {
+  display: flex;
+  margin-top: 10px;
+}
+
+.post__input {
+  flex: 1;
+  border: none;
+  padding: 10px;
+  border-top: 1px solid lightgray;
+}
+
+.post__button {
+  border: none;
+  border-top: 1px solid lightgray;
+  color: #6082a3;
+  background-color: transparent;
+  flex: 0;
+}
