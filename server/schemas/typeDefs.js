@@ -3,7 +3,7 @@ const { gql } = require('apollo-server-express');
 const typeDefs = gql`
     type User {
         _id: ID!
-        username: String!
+        username: String
         email: String!
         password: String!
         artwork: [Art]
@@ -11,20 +11,21 @@ const typeDefs = gql`
 
     type Art {
         _id: ID!
-        title: String!
+        title: String
         image: String
-        owner: [User]
-        description: String     
-        likesCount: Int!
-        viewsCount: Int!
-        evokeFunnyCount: Int!
-        evokeBeautifulCount: Int!
-        evokeSadCount: Int!
-        evokeWholesomeCount: Int!
-        evokeMysteriousCount: Int!
-        evokeThoughtfulCount: Int!
-        evokeCalmingCount: Int!
-        comments: [Comment]!
+        owner: User
+        description: String
+        submittedAt: String     
+        likesCount: Int
+        viewsCount: Int
+        evokeFunnyCount: Int
+        evokeBeautifulCount: Int
+        evokeSadCount: Int
+        evokeWholesomeCount: Int
+        evokeMysteriousCount: Int
+        evokeThoughtfulCount: Int
+        evokeCalmingCount: Int
+        comments: [Comment]
     }
 
     type Comment {
@@ -39,17 +40,12 @@ const typeDefs = gql`
         user: User!
     }
 
-    type Evoke {
-        emotion: String!
-        art: [Art]
-    }
-
     type Query {
         me: User
-        users: [User]!
+        users: [User]
         user(username: String!): User
-        art(username: String!): [Art]!
-        artwork(artId: ID!): Art
+        multipleArt(username: String!): [Art]
+        singleArt(artId: ID!): Art
         comment(commentId: ID!): Art
     }
 
@@ -65,34 +61,33 @@ const typeDefs = gql`
             password: String!
         ): Auth
 
-        addArtwork(
-            title: String!, 
-            image: String!, 
-            owner: String!, 
-            description: String!, 
-            likesCount: Int!, 
-            viewsCount: Int!, 
-            evokeFunnyCount: Int!
-            evokeBeautifulCount: Int!
-            evokeSadCount: Int!
-            evokeWholesomeCount: Int!
-            evokeMysteriousCount: Int!
-            evokeThoughtfulCount: Int!
-            evokeCalmingCount: Int!
+        saveART(
+            title: String, 
+            image: String, 
+            owner: String, 
+            description: String, 
+            likesCount: Int, 
+            viewsCount: Int, 
+            evokeFunnyCount: Int
+            evokeBeautifulCount: Int
+            evokeSadCount: Int
+            evokeWholesomeCount: Int
+            evokeMysteriousCount: Int
+            evokeThoughtfulCount: Int
+            evokeCalmingCount: Int
         ): User
 
         addComment(
             artId: ID!, 
-            commentText: String!, 
-            owner: String!
+            commentText: String, 
         ): Art
 
-        removeArtwork(
+        removeART(
             artId: ID!
         ): User
         
         removeComment(
-            artId: ID!, 
+            artId: ID!
             commentId: ID!
         ): Art
     }
