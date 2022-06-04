@@ -11,20 +11,20 @@ const typeDefs = gql`
 
     type Art {
         _id: ID!
-        title: String!
+        title: String
         image: String
         owner: [User]
         description: String     
-        likesCount: Int!
-        viewsCount: Int!
-        evokeFunnyCount: Int!
-        evokeBeautifulCount: Int!
-        evokeSadCount: Int!
-        evokeWholesomeCount: Int!
-        evokeMysteriousCount: Int!
-        evokeThoughtfulCount: Int!
-        evokeCalmingCount: Int!
-        comments: [Comment]!
+        likesCount: Int
+        viewsCount: Int
+        evokeFunnyCount: Int
+        evokeBeautifulCount: Int
+        evokeSadCount: Int
+        evokeWholesomeCount: Int
+        evokeMysteriousCount: Int
+        evokeThoughtfulCount: Int
+        evokeCalmingCount: Int
+        comments: [Comment]
     }
 
     type Comment {
@@ -65,29 +65,29 @@ const typeDefs = gql`
             password: String!
         ): Auth
 
-        addArtwork(
-            title: String!, 
-            image: String!, 
-            owner: String!, 
-            description: String!, 
-            likesCount: Int!, 
-            viewsCount: Int!, 
-            evokeFunnyCount: Int!
-            evokeBeautifulCount: Int!
-            evokeSadCount: Int!
-            evokeWholesomeCount: Int!
-            evokeMysteriousCount: Int!
-            evokeThoughtfulCount: Int!
-            evokeCalmingCount: Int!
-        ): User
+        ArtInput(
+            title: String, 
+            image: String, 
+            owner: String, 
+            description: String, 
+            likesCount: Int, 
+            viewsCount: Int, 
+            evokeFunnyCount: Int
+            evokeBeautifulCount: Int
+            evokeSadCount: Int
+            evokeWholesomeCount: Int
+            evokeMysteriousCount: Int
+            evokeThoughtfulCount: Int
+            evokeCalmingCount: Int
+        ): Art
 
         addComment(
-            artId: ID!, 
+            artId: ID, 
             commentText: String!, 
             owner: String!
         ): Art
 
-        removeArtwork(
+        removeART(
             artId: ID!
         ): User
         

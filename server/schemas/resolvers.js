@@ -1,8 +1,13 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Art, Comment, Evoke } = require('../models');
 const { signToken } = require('../utils/auth');
+const { GraphQLUpload, graphqlUploadExpress } = require('graphql-upload')
+const { finished } = require('stream/promises');
+
 
 const resolvers = {
+    Upload: GraphQLUpload,
+
     Query: {
         me: async (parent, args, context) => {
             if (context.user) {
@@ -64,7 +69,7 @@ const resolvers = {
         },
 
         // Related to Artwork
-        addArtwork: async (parent, { artData }, context) => {
+        ArtInput: async (parent, { artData }, context) => {
             if (context.user) {
                 const artwork = await Art.create({
                     title,
@@ -84,7 +89,7 @@ const resolvers = {
             throw new AuthenticationError('Need to be logged in to add artwork!');
         },
 
-        removeArtwork: async (parent, { artId }, context) => {
+        removeART: async (parent, { artId }, context) => {
             if (context.user) {
                 const updatedArtwork = await Art.findOneAndDelete({
                     _id: artId,
