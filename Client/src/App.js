@@ -97,7 +97,7 @@ function App() {
   return (
     <div className="home">
       <Modal open={open} onClose={() => setOpen(false)}>
-        <div style={modalStyle} className='modal'>
+        <div className='home__modal'>
           <form className="home__login">
             <center>
               <img
@@ -125,7 +125,7 @@ function App() {
       </Modal>
 
       <Modal open={registerOpen} onClose={() => setRegisterOpen(false)}>
-        <div style={modalStyle} className='modal'>
+        <div className='home__modal'>
           <form className="home__login">
             <center>
               <img
@@ -164,6 +164,7 @@ function App() {
         />
         {user?.displayName ? (
           <div className="home__headerRight">
+            <h2> {user.displayName} </h2>
             <Button onClick={() => auth.signOut()}>Logout</Button>
             <Avatar
               className="home__headerAvatar"
