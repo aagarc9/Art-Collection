@@ -16,7 +16,9 @@ const ArtPage = () => {
   }, []);
 
     return (
-      <div className="home__postsLeft">
+    <main class="header">
+      <h2>How does this art make you feel?</h2>
+      <div className="art__postsLeft">
         <FlipMove>
             {posts.map(({ id, post }) => (
                 <Post
@@ -30,6 +32,7 @@ const ArtPage = () => {
             ))}
          </FlipMove>
       </div>
+    </main>
     );
   };
 
@@ -52,6 +55,9 @@ const artObject = {
     evokeCalmingCount: 4
   
 }
+
+
+
 {/* <div class="artpage">
         Welcome to your Art Page!
         <div class="title-art">

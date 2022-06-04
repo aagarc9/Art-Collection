@@ -81,11 +81,11 @@
   margin-bottom: 10px;
 }
 
+
 .home__posts {
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: row;
   flex-wrap: wrap;
-  padding: 10px 30px;
 }
 
 .home__postsRight {
@@ -93,9 +93,11 @@
 }
 
 .home__postsLeft {
-  margin-left: 30%;
+  margin-left: 25%;
   padding: 25px;
 }
+
+
 
 .imageupload {
   display: flex;
@@ -124,7 +126,7 @@
 
 .post__image {
   width: 100%;
-  height: 375px;
+  height: 400px;
   object-fit: cover;
 }
 
@@ -183,3 +185,12 @@
 }
 
 /* Art Page */
+
+/* .art__postsLeft {
+  margin-left: 32%;
+  padding: 25px;
+} */
+
+h2 {
+  text-align: center;
+}
