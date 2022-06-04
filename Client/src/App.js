@@ -6,7 +6,7 @@ import { Button, Avatar, Modal, Input } from "@mui/material";
 import FlipMove from "react-flip-move";
 import { InstagramEmbed } from "react-social-media-embed";
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import { makeStyles } from "@mui/styles";
+
 
 //IMPORT PAGES
 import Art from "./pages/Art"

@@ -92,6 +92,11 @@
   margin-left: 10px;
 }
 
+.home__postsLeft {
+  margin-left: 30%;
+  padding: 25px;
+}
+
 .imageupload {
   display: flex;
   flex-direction: column;
@@ -176,3 +181,5 @@
   background-color: transparent;
   flex: 0;
 }
+
+/* Art Page */
