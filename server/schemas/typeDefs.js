@@ -21,6 +21,7 @@ const typeDefs = gql`
         evokeFunnyCount: Int
         evokeBeautifulCount: Int
         evokeSadCount: Int
+        evokeInspiringCount: Int
         evokeWholesomeCount: Int
         evokeMysteriousCount: Int
         evokeThoughtfulCount: Int
@@ -41,12 +42,13 @@ const typeDefs = gql`
     }
 
     type Query {
-        me: User
-        users: [User]
-        user(username: String!): User
-        multipleArt(username: String!): [Art]
-        singleArt(artId: ID!): Art
-        comment(commentId: ID!): Art
+        me: User!
+        users: [User]!
+        user(username: String!): [User]!
+        multipleArt(username: String!): [Art]!
+        singleArt(artId: ID!): Art!
+        comment(commentId: ID!): [Art]!
+        counters(artId: ID!): Art!
     }
 
     type Mutation {
@@ -68,18 +70,32 @@ const typeDefs = gql`
             description: String, 
             likesCount: Int, 
             viewsCount: Int, 
-            evokeFunnyCount: Int
-            evokeBeautifulCount: Int
-            evokeSadCount: Int
-            evokeWholesomeCount: Int
-            evokeMysteriousCount: Int
-            evokeThoughtfulCount: Int
-            evokeCalmingCount: Int
+            evokeFunnyCount: Int,
+            evokeBeautifulCount: Int,
+            evokeSadCount: Int,
+            evokeInspiringCount: Int,
+            evokeWholesomeCount: Int,
+            evokeMysteriousCount: Int,
+            evokeThoughtfulCount: Int,
+            evokeCalmingCount: Int,
         ): User
 
         addComment(
             artId: ID!, 
             commentText: String, 
+        ): Art
+
+        addCounters(
+            artId: ID!, 
+            likesCount: Int, 
+            viewsCount: Int, 
+            evokeFunnyCount: Int, 
+            evokeBeautifulCount: Int, 
+            evokeSadCount: Int,
+            evokeInspiringCount: Int, 
+            evokeMysteriousCount: Int, 
+            evokeThoughtfulCount: Int, 
+            evokeCalmingCount: Int
         ): Art
 
         removeART(

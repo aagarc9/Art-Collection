@@ -27,7 +27,7 @@ export const QUERY_ME = gql`
 
 export const singleArt = gql`
   query singleArt ($artId: ID!) {
-    artwork (artId: $artId) {
+    singleArt (artId: $artId) {
       title
       image
       description
@@ -41,10 +41,12 @@ export const singleArt = gql`
       evokeFunnyCount
       evokeCalmingCount
       evokeBeautifulCount
+      evokeInspiringCount
       evokeWholesomeCount
       evokeMysteriousCount
       evokeThoughtfulCount
       comments {
+        _id
         commentText
         commentAuthor
       }
@@ -57,7 +59,7 @@ export const multipleArt = gql`
     multipleArt (username: $username) {
       _id
       title
-      image
+      description
       submittedAt
     }
   }

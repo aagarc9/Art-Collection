@@ -29,6 +29,7 @@ export const ADD_USER = gql`
 export const SAVE_ART = gql`
   mutation saveART($title: String, $image: String, $description: String) {
     saveART (title: $title, image: $image, description: $description) {
+      username
       artwork {
         _id
         title
@@ -40,6 +41,7 @@ export const SAVE_ART = gql`
         evokeSadCount
         evokeFunnyCount
         evokeCalmingCount
+        evokeInspiringCount
         evokeBeautifulCount
         evokeWholesomeCount
         evokeMysteriousCount
