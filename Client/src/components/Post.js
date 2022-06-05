@@ -51,8 +51,11 @@ const Post = forwardRef(
         </div>
 
         <Link to={`/art/${postId}`}>
+          <div className="post__image__wrap">
           <img className="post__image" src={imageUrl} alt="post" />
+          </div>
           </Link>
+        <div className="post__details">
         <h4 className="post__text">
           {username} <span className="post__caption">{caption}</span>
         </h4>
@@ -65,6 +68,7 @@ const Post = forwardRef(
             </p>
           ))}
         </div>
+        
 
         {user && (
           <form className="post__commentBox">
@@ -84,7 +88,9 @@ const Post = forwardRef(
               Post
             </button>
           </form>
+          
         )}
+        </div>
       </div>
     );
   }
