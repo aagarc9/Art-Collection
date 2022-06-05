@@ -2,11 +2,10 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import { db, auth } from "./firebase";
-import { Button, Avatar, Modal, Input } from "@mui/material";
+import { Button, Avatar, Modal, Input, Dialog } from "@mui/material";
 import FlipMove from "react-flip-move";
-import { InstagramEmbed } from "react-social-media-embed";
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-
+// import { InstagramEmbed } from "react-social-media-embed";
+import { BrowserRouter as Router, Switch, Route, NavLink, Link } from 'react-router-dom';
 
 //IMPORT PAGES
 import Art from "./pages/Art"
@@ -105,7 +104,7 @@ function App() {
 
   <Router>
     <div className="home">
-      <Modal open={open} onClose={() => setOpen(false)}>
+      <Dialog open={open} onClose={() => setOpen(false)}>
         <div className='home__modal'>
           <form className="home__login">
             <center>
@@ -131,9 +130,9 @@ function App() {
             <Button onClick={handleLogin}>Login</Button>
           </form>
         </div>
-      </Modal>
+      </Dialog>
 
-      <Modal open={registerOpen} onClose={() => setRegisterOpen(false)}>
+      <Dialog open={registerOpen} onClose={() => setRegisterOpen(false)}>
         <div className='home__modal'>
           <form className="home__login">
             <center>
@@ -164,24 +163,24 @@ function App() {
             <Button onClick={handleRegister}>Register</Button>
           </form>
         </div>
-      </Modal>
+      </Dialog>
       <div className="home__header">
-        <Link to="/">
+        <NavLink style={{ color: 'inherit', textDecoration: 'inherit'}} to="/">
         <img
           className="home__headerImage"
           src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Evoke_Logo_for_wikipedia_use.jpg"
           alt=""
         />
-        </Link>
+        </NavLink>
 {/* TEMPORARY LINK TO ART PAGE */}
-        <Link to="/art">
+        <NavLink style={{ color: 'inherit', textDecoration: 'inherit'}} to="/art">
           ART LINK TEMPORARY
-        </Link>
+        </NavLink>
         {user?.displayName ? (
           <div className="home__headerRight">
-            <Link to="/profile">
+            <NavLink style={{ color: 'inherit', textDecoration: 'inherit'}} to="/profile">
             <h2> {user.displayName} </h2>
-            </Link>
+            </NavLink>
             <Button className="btn__logout" onClick={() => auth.signOut()}>Logout</Button>
             <Avatar
               className="home__headerAvatar"
@@ -214,9 +213,9 @@ function App() {
               ))}
             </FlipMove>
           </div>
-          <div className="home__postsRight">
+          {/* <div className="home__postsRight">
             <InstagramEmbed
-              url="https://www.instagram.com/twicetagram/?hl=en"
+              url="https://www.instagram.com/bts.bighitofficial/?hl=en"
               maxWidth={320}
               hideCaption={false}
               containerTagName="div"
@@ -227,7 +226,7 @@ function App() {
               onAfterRender={() => {}}
               onFailure={() => {}}
             />
-          </div>
+          </div> */}
 
         </div>
         <div>        
@@ -244,7 +243,9 @@ function App() {
     </div>
     </Route>
         <Route exact path="/profile" component={Profile}/>
-        <Route exact path="/art" component={Art}/>
+        <Route exact path="/art/:id">
+          <Art />
+        </Route>
     </Switch> 
     </div>
     </Router>

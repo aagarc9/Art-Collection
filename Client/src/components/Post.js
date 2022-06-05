@@ -2,11 +2,13 @@ import React, { useState, useEffect, forwardRef } from "react";
 import Avatar from "@mui/material/Avatar";
 import { db } from "../firebase";
 import firebase from "firebase";
+import { Link } from 'react-router-dom';
 
 const Post = forwardRef(
   ({ user, username, postId, imageUrl, caption }, ref) => {
     const [comments, setComments] = useState([]);
     const [comment, setComment] = useState("");
+    
 
     useEffect(() => {
       let unsubscribe;
@@ -15,6 +17,7 @@ const Post = forwardRef(
           .collection("posts")
           .doc(postId)
           .collection("comments")
+          .orderBy("timestamp", "desc")
           .onSnapshot((snapshot) => {
             setComments(snapshot.docs.map((doc) => doc.data()));
           });
@@ -47,7 +50,9 @@ const Post = forwardRef(
           <h3>{username}</h3>
         </div>
 
-        <img className="post__image" src={imageUrl} alt="post" />
+        <Link to={`/art/${postId}`}>
+          <img className="post__image" src={imageUrl} alt="post" />
+          </Link>
         <h4 className="post__text">
           {username} <span className="post__caption">{caption}</span>
         </h4>
@@ -56,7 +61,7 @@ const Post = forwardRef(
           {comments.map((comment) => (
             <p className="post__comment">
               <b>{comment.username}</b> {comment.text} 
-               <p className="post__commentDisp">{comment.timestamp ? ((comment.timestamp.toDate().toLocaleTimeString('en-US')) + ' on ' + comment.timestamp.toDate().toDateString()) : ""}</p>
+               <p className="post__commentDisp">{comment.timestamp ? ((comment.timestamp.toDate().toLocaleTimeString('en-US')) + ' on' + comment.timestamp.toDate().toDateString()) : ""}</p>
             </p>
           ))}
         </div>

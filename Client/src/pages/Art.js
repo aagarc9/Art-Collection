@@ -1,35 +1,41 @@
 import React, { useState, useEffect } from "react";
+import { firebase, doc, getDoc } from "firebase";
 import FlipMove from "react-flip-move";
 import { db } from "../firebase";
 import Post from "../components/Post";
+import { useParams } from "react-router-dom";
 
 const ArtPage = () => {
   const [user, setUser] = useState(null);
-  const [posts, setPosts] = useState([]);
+  const [post, setPosts] = useState([]);
+  const { id } = useParams()
 
-  useEffect(() => {
-    db.collection("posts")
-      .orderBy("timestamp", "desc")
-      .onSnapshot((snapshot) =>
-        setPosts(snapshot.docs.map((doc) => ({ id: doc.id, post: doc.data() })))
-      );
-  }, []);
+  console.log(id)
 
+  // useEffect(() => {
+  //   db.collection("posts")
+  //     .orderBy("timestamp", "desc")
+  //     .onSnapshot((snapshot) =>
+  //       setPosts(snapshot.docs.map((doc) => ({ id: doc.id, post: doc.data() })))
+  //     );
+  // }, []);
+
+  const currentPost = db.collection("posts").doc(id)
+
+  console.log(currentPost)
     return (
-    <main class="header">
+    <main className="header">
+      <p>{id} {currentPost.id} {currentPost.username}</p>
       <h2>How does this art make you feel?</h2>
-      <div className="art__postsLeft">
+      <div className="art__postsLeft"> xx
         <FlipMove>
-            {posts.map(({ id, post }) => (
                 <Post
-                  user={user}
-                  key={id}
-                  postId={id}
-                  username={post.username}
-                  caption={post.caption}
-                  imageUrl={post.imageUrl}
+                  key={currentPost.id}
+                  postId={currentPost.id}
+                  username={currentPost.username}
+                  caption={currentPost.caption}
+                  imageUrl={currentPost.imageUrl}
               />
-            ))}
          </FlipMove>
       </div>
     </main>
