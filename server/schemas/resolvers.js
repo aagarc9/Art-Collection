@@ -10,7 +10,7 @@ const resolvers = {
 
     Query: {
         me: async (parent, args, context) => {
-            console.log('QUERY me resolver ran')
+            console.log('QUERY_ME resolver ran')
             if (context.user) {
               const userData = await User.findOne({ _id: context.user._id }).select('-__v -password')
         
@@ -76,7 +76,8 @@ const resolvers = {
 
                 await User.findOneAndUpdate(
                     { _id: context.user._id },
-                    { $addToSet: { art: artwork._id } }
+                    { $addToSet: { art: artwork._id } },
+                    { new: true }
                 );
                 
                 console.log('Artwork added')
@@ -95,10 +96,41 @@ const resolvers = {
 
                 await User.findOneAndUpdate(
                     { _id: context.user._id },
-                    { $pull: { art: updatedArtwork._id }}
+                    { $pull: { art: updatedArtwork._id }},
+                    { new: true }
                 );
                 
                 console.log('Artwork deleted')
+                return updatedArtwork;
+            }
+
+            throw new AuthenticationError('Need to be logged in to remove artwork!');
+        },
+
+        addCounters: async (parent, { artId, likesCount, viewsCount, evokeInspiringCount, evokeFunnyCount, evokeBeautifulCount, evokeSadCount, evokeMysteriousCount, evokeThoughtfulCount, evokeCalmingCount }, context) => {
+            if (context.user) {
+                const updatedArtwork = await Art.findOneAndUpdate({
+                    _id: artId,
+                    likesCount,
+                    viewsCount,
+                    evokeFunnyCount,
+                    evokeBeautifulCount,
+                    evokeBeautifulCount,
+                    evokeSadCount,
+                    evokeInspiringCount,
+                    evokeMysteriousCount,
+                    evokeThoughtfulCount,
+                    evokeCalmingCount,
+                    owner: context.user._id
+                });
+
+                await User.findOneAndUpdate(
+                    { _id: context.user._id },
+                    { $pull: { art: updatedArtwork._id }},
+                    { new: true }
+                );
+                
+                console.log('Counter added')
                 return updatedArtwork;
             }
 
