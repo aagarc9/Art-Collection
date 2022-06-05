@@ -100,6 +100,8 @@ function App() {
     setRegisterOpen(false);
   };
 
+  
+
   return (
 
   <Router>
@@ -173,12 +175,12 @@ function App() {
         />
         </NavLink>
 {/* TEMPORARY LINK TO ART PAGE */}
-        <NavLink style={{ color: 'inherit', textDecoration: 'inherit'}} to="/art">
+        {/* <NavLink style={{ color: 'inherit', textDecoration: 'inherit'}} to="/art">
           ART LINK TEMPORARY
-        </NavLink>
+        </NavLink> */}
         {user?.displayName ? (
           <div className="home__headerRight">
-            <NavLink className="home__headerProfile" style={{ color: 'inherit', textDecoration: 'inherit'}} to="/profile">
+            <NavLink className="home__headerProfile" style={{ color: 'inherit', textDecoration: 'inherit'}} to={`/profile/${user.displayName}`}>
             <h2 > {user.displayName} </h2>
             </NavLink>
             <Button className="btn__logout" onClick={() => auth.signOut()}>Logout</Button>
@@ -241,7 +243,9 @@ function App() {
         </div>
     </div>
     </Route>
-        <Route exact path="/profile" component={Profile}/>
+        <Route exact path="/profile">
+          <Profile parentToChild={user} />
+        </Route>
         <Route exact path="/art/:id">
           <Art />
         </Route>

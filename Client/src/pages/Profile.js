@@ -1,31 +1,20 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { db, auth } from "../../src/firebase";
+import { useParams } from "react-router-dom";
 
 const Profile = () => {
-  const [user, setUser] = useState(null);
-  const [username, setUsername] = useState("");
+  // const [user, setUser] = useState(null);
+  // const [username, setUsername] = useState("");
 
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((authUser) => {
-      if (authUser) {
-        // user is logged in...
-        console.log(authUser);
-        setUser(authUser);
-      } else {
-        setUser(null);
-      }
-    });
+  // const { currentUserName } = useParams()
 
-    return () => {
-      unsubscribe();
-    };
-  }, [user]);
+  // console.log(currentUserName)
 
 
     return (
     <div>
-        <h1>{user}</h1>
+        <h1>"Test" </h1>
     </div>   
     );
   };

@@ -99,10 +99,20 @@ margin-right: 10px;
 
 .imageupload {
   display: flex;
+  flex-direction: column;
+  width: 70%;
+  /* margin-left: auto;
+  margin-right: auto; */
+}
+
+.imageupload__info {
+  display: flex;
   flex-direction: row;
-  width: 60%;
-  margin-left: auto;
-  margin-right: auto;
+  width: 100%;
+}
+
+.imageupload__input {
+  width: 50%
 }
 
 .imageupload__progress {
@@ -139,6 +149,7 @@ margin-right: 10px;
 .post:hover .post__details {
   visibility: visible;
   max-height: 2000px;
+
 }
 
 .post:hover .post__image__wrap {

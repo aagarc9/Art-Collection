@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 
 const ArtPage = () => {
   const [user, setUser] = useState(null);
-  const [post, setPosts] = useState([]);
+  const [currentPost, setPost] = useState([]);
   const { id } = useParams()
 
   console.log(id)
@@ -20,12 +20,26 @@ const ArtPage = () => {
   //     );
   // }, []);
 
-  const currentPost = db.collection("posts").doc(id)
+  useEffect(() => {
+    let unsubscribe;
+    if (id) {
+      unsubscribe = db
+        .collection("posts")
+        .doc(id)
+        .onSnapshot((snapshot) => {
+          setPost(snapshot.data());
+        });
+    }
+    return () => {
+      unsubscribe();
+    };
+  }, [id]);
 
   console.log(currentPost)
+
     return (
     <main className="header">
-      <p>{id} {currentPost.id} {currentPost.username}</p>
+      <p>{id} {currentPost.id} {currentPost.username} {currentPost.caption} </p>
       <h2>How does this art make you feel?</h2>
       <div className="art__postsLeft"> xx
         <FlipMove>
