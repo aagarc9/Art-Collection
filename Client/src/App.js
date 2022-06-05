@@ -100,6 +100,8 @@ function App() {
     setRegisterOpen(false);
   };
 
+  
+
   return (
 
   <Router>
@@ -173,13 +175,13 @@ function App() {
         />
         </NavLink>
 {/* TEMPORARY LINK TO ART PAGE */}
-        <NavLink style={{ color: 'inherit', textDecoration: 'inherit'}} to="/art">
+        {/* <NavLink style={{ color: 'inherit', textDecoration: 'inherit'}} to="/art">
           ART LINK TEMPORARY
-        </NavLink>
+        </NavLink> */}
         {user?.displayName ? (
           <div className="home__headerRight">
-            <NavLink style={{ color: 'inherit', textDecoration: 'inherit'}} to="/profile">
-            <h2> {user.displayName} </h2>
+            <NavLink className="home__headerProfile" style={{ color: 'inherit', textDecoration: 'inherit'}} to={`/profile/${user.displayName}`}>
+            <h2 > {user.displayName} </h2>
             </NavLink>
             <Button className="btn__logout" onClick={() => auth.signOut()}>Logout</Button>
             <Avatar
@@ -199,7 +201,6 @@ function App() {
     <Route exact path="/" >
       <div className="home">
         <div className="home__posts">
-          <div className="home__postsLeft">
             <FlipMove>
               {posts.map(({ id, post }) => (
                 <Post
@@ -212,7 +213,7 @@ function App() {
                 />
               ))}
             </FlipMove>
-          </div>
+
           {/* <div className="home__postsRight">
             <InstagramEmbed
               url="https://www.instagram.com/bts.bighitofficial/?hl=en"
@@ -242,7 +243,9 @@ function App() {
         </div>
     </div>
     </Route>
-        <Route exact path="/profile" component={Profile}/>
+        <Route exact path="/profile">
+          <Profile parentToChild={user} />
+        </Route>
         <Route exact path="/art/:id">
           <Art />
         </Route>
