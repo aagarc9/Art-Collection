@@ -4,17 +4,14 @@ import { db, auth } from "../../src/firebase";
 import { useParams } from "react-router-dom";
 
 const Profile = () => {
-  // const [user, setUser] = useState(null);
-  // const [username, setUsername] = useState("");
 
-  // const { currentUserName } = useParams()
+  const { username } = useParams()
 
-  // console.log(currentUserName)
-
+  console.log(username)
 
     return (
     <div>
-        <h1>"Test" </h1>
+        <h1>"Test" `{username}`</h1>
     </div>   
     );
   };
