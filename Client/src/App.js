@@ -167,7 +167,7 @@ function App() {
         </div>
       </Dialog>
       <div className="home__header">
-        <NavLink style={{ color: 'inherit', textDecoration: 'inherit'}} exact={true} to="/">
+        <NavLink style={{ color: 'inherit', textDecoration: 'inherit'}} exact to="/">
         <img
           className="home__headerImage"
           src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Evoke_Logo_for_wikipedia_use.jpg"
@@ -243,7 +243,7 @@ function App() {
         </div>
     </div>
     </Route>
-        <Route exact path="/profile/:username">
+        <Route path="/profile/:username">
           <Profile />
         </Route>
         <Route exact path="/art/:id">
