@@ -2,20 +2,47 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { db, auth } from "../../src/firebase";
 import { useParams } from "react-router-dom";
+import Post from "../components/Post";
 
 const Profile = () => {
-  // const [user, setUser] = useState(null);
-  // const [username, setUsername] = useState("");
+  const [userPosts, setUserPosts] = useState([])
+  const { username } = useParams()
 
-  // const { currentUserName } = useParams()
+  console.log(username)
 
-  // console.log(currentUserName)
-
+  useEffect(() => {
+    let pullUserPost;
+    if (username) {
+      pullUserPost = db
+        .collection("posts")
+        .where('username', '==', username)
+        .orderBy("timestamp", "desc")
+        .onSnapshot((snapshot) => {
+          setUserPosts(snapshot.docs.map((doc) => ({ id: doc.id, post: doc.data() })))
+        });
+    }
+    return () => {
+      pullUserPost();
+    };
+  }, [username]);
 
     return (
+      <div className="profile__container">
     <div>
-        <h1>"Test" </h1>
+        <h1>"Test" `{username}`</h1>
     </div>   
+    <div className="home__posts">
+              {userPosts.map(({ id, post }) => (
+                <Post
+                  key={id}
+                  postId={id}
+                  username={post.username}
+                  caption={post.caption}
+                  imageUrl={post.imageUrl}
+                />
+              ))}
+        </div>
+    </div>
     );
   };
 
