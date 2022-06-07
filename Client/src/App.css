@@ -31,8 +31,9 @@
 }
 
 .home {
-  background-color: #fafafa;
-  padding-bottom: 100px;
+  background-color: #d17d7d;
+  padding: 100px;
+
 }
 
 .home__login {
