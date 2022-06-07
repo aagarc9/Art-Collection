@@ -199,7 +199,7 @@ function App() {
       </div>
     <Switch>
     <Route exact path="/" >
-      <div className="home">
+      <div >
         <div className="home__posts">
             <FlipMove>
               {posts.map(({ id, post }) => (
@@ -213,22 +213,6 @@ function App() {
                 />
               ))}
             </FlipMove>
-
-          {/* <div className="home__postsRight">
-            <InstagramEmbed
-              url="https://www.instagram.com/bts.bighitofficial/?hl=en"
-              maxWidth={320}
-              hideCaption={false}
-              containerTagName="div"
-              protocol=""
-              injectScript
-              onLoading={() => {}}
-              onSuccess={() => {}}
-              onAfterRender={() => {}}
-              onFailure={() => {}}
-            />
-          </div> */}
-
         </div>
         <div>        
         {user?.displayName ? (

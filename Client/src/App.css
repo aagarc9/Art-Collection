@@ -7,8 +7,6 @@
   border: #6082a3;
 }
 
-
-
 .art__main {
   padding: 10px;
 }
@@ -19,17 +17,21 @@
 }
 
 .art__container {
+  margin-top: 15px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  background-color: rgb(247, 241, 241); 
   align-items: center;
+  border-radius: 5px;
 } 
 
 .art__evokeBtnContainer {
   margin: 15px;
-  color: #ffffff;
+  color: #289b05; 
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-size: 18px;
+  font-weight: bold;
 }
 
 .art__evokeButton {
@@ -40,13 +42,12 @@
   margin: 10px;
 }
 
-
 .art__postsLeft {
   margin-left: 50px;
 }
 
 .home {
-  background-color: #d17d7d;
+  background-color: rgb(56, 55, 55);
   padding: 100px;
 
 }
@@ -76,22 +77,30 @@
   left: 50%;
 }
 
+.home__container {
+  justify-content: center;
+}
+
 .home__upload {
   position: fixed;
   bottom: 0;
-  width: 100%;
-  background-color: white;
-  border-top: 1px solid lightgray;
+  width: 80%;
+  background-color: rgba(0, 0, 0, 0.8);
+  color:rgb(210, 250, 161);
   text-align: center;
-  padding: 20px;
+  justify-self: center;
+  padding: 15px;
   display: flex;
   justify-content: center;
+  border-radius: 5px 5px 0 0;
 }
 
 .home__headerImage {
   object-fit: contain;
-  margin: 5px; 
+  margin: 20px; 
   height: 50px; 
+  outline:rgb(210, 250, 161) solid 1px;
+  border-radius: 5px;
 }
 
 .home__headerRight {
@@ -99,7 +108,9 @@
   align-items: center;
   padding: 25px;
   margin-right: 10px;
-  outline: #6082a3 solid 1px;
+  /* outline: #7fdd73 solid 1px; */
+  color: rgb(210, 250, 161);
+  border-radius: 5px;
 }
 
 .home__headerRight > p {
@@ -116,15 +127,15 @@ margin-right: 10px;
 }
 
 .home__header {
-  position: sticky;
+  position: sticky; 
   top: 0;
   display: flex;
   justify-content: space-between;
   z-index: 1;
   padding: 10px;
-  background-color: #ffffff;
-  border-bottom: 1px solid lightgray;
+  background-color: rgba(0, 0, 0, 0.6);
   margin-bottom: 10px;
+  border-radius: 5px;
 }
 
 
@@ -153,7 +164,10 @@ margin-right: 10px;
 }
 
 .imageupload__input {
-  width: 50%
+  margin: 5px;
+  width: 70%;
+  background-color:rgb(242, 245, 238);
+  border-radius: 5px;
 }
 
 .imageupload__progress {
@@ -162,11 +176,11 @@ margin-right: 10px;
 
 .imageupload__button {
   margin: 10px;
-  height: 30px;
+  height: 40px;
 }
 
 .post {
-  border: 1px solid lightgray;
+  border: 0.5px solid lightgray;
   border-radius: 5px;
   /* width: fit-content; */
   margin-bottom: 45px;
@@ -286,8 +300,8 @@ margin-right: 10px;
   border-radius: 5px;
   padding: 0px 5px;
   margin: 2px;
-  color: #6082a3;
-  background-color: transparent;
+  color: rgb(210, 250, 161);
+  background-color: rgb(24, 23, 23);
   flex: 0;
   transition: all 0.4s linear;
 }
