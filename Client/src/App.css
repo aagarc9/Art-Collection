@@ -82,6 +82,9 @@
 .home__headerRight {
   display: flex;
   align-items: center;
+  padding: 25px;
+  margin-right: 10px;
+  outline: #6082a3 solid 1px;
 }
 
 .home__headerRight > p {
@@ -281,7 +284,11 @@ margin-right: 10px;
 /* Art Page */
 
 .art__postsLeft {
-  margin-left: 32%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   padding: 25px;
 }
 
