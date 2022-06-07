@@ -13,8 +13,23 @@
   padding: 10px;
 }
 
+.art__main p {
+  padding: 10px;
+  display: none;
+}
+
+.art__container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+} 
+
 .art__evokeBtnContainer {
   margin: 15px;
+  color: #ffffff;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 18px;
 }
 
 .art__evokeButton {

@@ -190,7 +190,71 @@ const postEvokeFunny = (e) => {
     <main className="header art__main">
       <p>{id} {currentPost.username} {currentPost.caption} </p>
       <h2>How does this art make you feel?</h2>
-      
+
+      {/* SECTION FOR EVOKE BUTTONS */}
+      <div class="art__container">
+      <div className="art__evokeBtnContainer"> Sad: {evokeSadCount}
+        <IconButton
+              color="secondary"
+              size="large"
+              variant="outline"
+              type="submit"
+              onClick={postEvokeSad}
+            ><SentimentDissatisfiedOutlinedIcon />
+        </IconButton>
+      </div>
+      <div className="art__evokeBtnContainer"> Heartwarming: {evokeHeartwarmingCount}
+        <IconButton
+              color="error"
+              size="large"
+              variant="outline"
+              type="submit"
+              onClick={postEvokeHeartwarming}
+            ><VolunteerActivismOutlinedIcon />
+        </IconButton>
+      </div>
+      <div className="art__evokeBtnContainer"> Mysterious: {evokeMysteriousCount}
+        <IconButton
+              color="default"
+              size="large"
+              variant="outline"
+              type="submit"
+              onClick={postEvokeMysterious}
+            >< SearchOutlinedIcon />
+        </IconButton>
+      </div>
+      <div className="art__evokeBtnContainer"> Funny: {evokeFunnyCount}
+        <IconButton
+              color="info"
+              size="large"
+              variant="outline"
+              type="submit"
+              onClick={postEvokeFunny}
+            >< SentimentVerySatisfiedOutlinedIcon/>
+        </IconButton>
+      </div>
+      <div className="art__evokeBtnContainer"> Nostalgic: {evokeNostalgicCount}
+        <IconButton
+              color="success"
+              size="large"
+              variant="outline"
+              type="submit"
+              onClick={postEvokeNostalgic}
+            ><CottageOutlinedIcon />
+        </IconButton>
+      </div>
+      <div className="art__evokeBtnContainer"> Inspiring: {evokeInspiringCount}
+        <IconButton
+              // className="art__evokeButton"
+              color="warning"
+              size="large"
+              variant="outline"
+              type="submit"
+              onClick={postEvokeInspiring}
+            ><EmojiObjectsOutlinedIcon />
+        </IconButton>
+      </div>
+      </div>
       <div className="art__postsLeft"> 
         <FlipMove>
                 <Post
@@ -201,69 +265,6 @@ const postEvokeFunny = (e) => {
                   imageUrl={currentPost.imageUrl}
               />
          </FlipMove>
-      </div>
-
-      {/* SECTION FOR EVOKE BUTTONS */}
-      <div className="art__evokeBtnContainer"> TEST Sad: {evokeSadCount}
-        <IconButton
-              color="secondary"
-              size="large"
-              variant="outline"
-              type="submit"
-              onClick={postEvokeSad}
-            ><SentimentDissatisfiedOutlinedIcon />
-        </IconButton>
-      </div>
-      <div className="art__evokeBtnContainer"> TEST Heartwarming: {evokeHeartwarmingCount}
-        <IconButton
-              color="error"
-              size="large"
-              variant="outline"
-              type="submit"
-              onClick={postEvokeHeartwarming}
-            ><VolunteerActivismOutlinedIcon />
-        </IconButton>
-      </div>
-      <div className="art__evokeBtnContainer"> TEST Mysterious: {evokeMysteriousCount}
-        <IconButton
-              color="default"
-              size="large"
-              variant="outline"
-              type="submit"
-              onClick={postEvokeMysterious}
-            >< SearchOutlinedIcon />
-        </IconButton>
-      </div>
-      <div className="art__evokeBtnContainer"> TEST Funny: {evokeFunnyCount}
-        <IconButton
-              color="info"
-              size="large"
-              variant="outline"
-              type="submit"
-              onClick={postEvokeFunny}
-            >< SentimentVerySatisfiedOutlinedIcon/>
-        </IconButton>
-      </div>
-      <div className="art__evokeBtnContainer"> TEST Nostalgic: {evokeNostalgicCount}
-        <IconButton
-              color="success"
-              size="large"
-              variant="outline"
-              type="submit"
-              onClick={postEvokeNostalgic}
-            ><CottageOutlinedIcon />
-        </IconButton>
-      </div>
-      <div className="art__evokeBtnContainer"> TEST Inspiring: {evokeInspiringCount}
-        <IconButton
-              // className="art__evokeButton"
-              color="warning"
-              size="large"
-              variant="outline"
-              type="submit"
-              onClick={postEvokeInspiring}
-            ><EmojiObjectsOutlinedIcon />
-        </IconButton>
       </div>
     </main>
 
