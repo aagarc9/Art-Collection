@@ -3,17 +3,29 @@
   padding: 0;
 }
 
+body {
+  background-color: rgb(56, 55, 55);;
+}
+
+.A_bottomtest {
+  position: fixed;
+  bottom: 0;
+}
+
 .btn__logout {
   border: #6082a3;
 }
 
+
 .art__main {
   padding: 10px;
+  background-color: rgb(56, 55, 55);
+  height: 100%;
 }
 
-.art__main p {
-  padding: 10px;
-  display: none;
+h1{
+  font-size: 2.5rem;
+  text-align: center;
 }
 
 .art__container {
@@ -42,7 +54,7 @@
   margin: 10px;
 }
 
-.art__postsLeft {
+.art__posts {
   margin-left: 50px;
 }
 
@@ -185,7 +197,7 @@ margin-right: 10px;
   /* width: fit-content; */
   margin-bottom: 45px;
   background-color: #ffffff;
-  max-width: 500px;
+  width: 500px;
   overflow: hidden;
   max-height: 375px;
   transition: all 0.2s linear;
@@ -321,7 +333,4 @@ margin-right: 10px;
   padding: 25px;
 }
 
-h2 {
-  text-align: center;
-}
 

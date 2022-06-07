@@ -199,7 +199,7 @@ function App() {
       </div>
     <Switch>
     <Route exact path="/" >
-      <div >
+      <div className="home__container">
         <div className="home__posts">
             <FlipMove>
               {posts.map(({ id, post }) => (
@@ -227,12 +227,12 @@ function App() {
         </div>
     </div>
     </Route>
-        <Route path="/profile/:username">
+    <Route path="/profile/:username">
           <Profile />
         </Route>
-        <Route exact path="/art/:id">
+    <Route exact path="/art/:id">
           <Art user={user} />
-        </Route>
+      </Route>
     </Switch> 
     </div>
     </Router>

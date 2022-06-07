@@ -26,11 +26,11 @@ const Profile = () => {
     };
   }, [username]);
 
-    return (
+  return (
       <div className="profile__container">
-    <div>
+    {/* <div>
         <h1>"Test" `{username}`</h1>
-    </div>   
+    </div>    */}
     <div className="home__posts">
               {userPosts.map(({ id, post }) => (
                 <Post

@@ -187,9 +187,9 @@ const postEvokeFunny = (e) => {
   console.log(currentPost)
 
     return (
-    <main className="header art__main">
-      <p>{id} {currentPost.username} {currentPost.caption} </p>
-      <h2>How does this art make you feel?</h2>
+    <div className="art__main">
+      {/* <p>{id} {currentPost.username} {currentPost.caption} </p> */}
+      <h1 className="art__question">What feelings does this art <span className="art__evoke">EVOKE</span>?</h1>
 
       {/* SECTION FOR EVOKE BUTTONS */}
       <div class="art__container">
@@ -266,9 +266,7 @@ const postEvokeFunny = (e) => {
               />
          </FlipMove>
       </div>
-    </main>
-
-
+    </div>
     );
   };
 
