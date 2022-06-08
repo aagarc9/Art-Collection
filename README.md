@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-# Art-Collection
-
-
-(This is a working draft - assignment not yet submitted)
-## Description
-=======
 # Evoke
 Project 3, UCI Bootcamp
 
@@ -28,7 +21,6 @@ SO THAT I can connect with other artists and users interested in art
 AND KNOW what kind of emotions certain art images evoke
 ```
 
->>>>>>> FrontEndStaging
 ---
 
 ## Table of Contents
@@ -45,18 +37,6 @@ AND KNOW what kind of emotions certain art images evoke
 11. [Questions](#questions)
 
 ---
-<<<<<<< HEAD
-## Description
-
----
-
-## Demo
-
----
-
-## Installation
-
-=======
 ## Installation
 
 To install, clone our Github repository.
@@ -71,22 +51,21 @@ To invoke the application, run:
 npm start
 ```
 
->>>>>>> FrontEndStaging
 ---
 
 ## Usage
 
-<<<<<<< HEAD
-=======
 While featuring everything that we have learned from the Boot Camp, Evoke particularly uses React for the front end, Graphql with a Node.js and Express.js server, Firebase, and MongoDB and Mongoose as database.
 
 The application is deployed on Heroku and has the following interface:
 
-[Image here]()
+<img src="./images/evoke-mainpage-image.jpg" alt="evoke-app-mainpage" width="50%"></img>
 
-[Demo here]()
+![Demo here](./images/evoke-app-demo.gif) 
 
-[Github repo here]()
+[Github repo here](https://github.com/aagarc9/Art-Collection)       <img src="./images/arcCollectionGitHubRepoQRcode.png" width="10%">
+
+[Heroku deployment](https://sheltered-savannah-55362.herokuapp.com/) <img src="./images/qrcode_sheltered-savannah-55362.herokuapp.com.png" width="10%">
 
 
 ### Features and Functionalities:
@@ -115,22 +94,12 @@ The application has the following features and functionalities:
 
 10. **Logout**. Logout allows the user to logout of the information.
 
->>>>>>> FrontEndStaging
 ---
 ## Credits
 
 ---
 
 ## License
-<<<<<<< HEAD
-
----
-
-## Contributing
-
----
-
-=======
 MIT License is used for this project. 
 
 ---
@@ -138,30 +107,23 @@ MIT License is used for this project.
 To contribute, please email Edwin Fame. 
 
 ---
->>>>>>> FrontEndStaging
 ## Tests
 
 ---
 
 
 ## Authors
-<<<<<<< HEAD
-=======
 * Edwin Fame
 * Andrew Ngo
 * Anrew Garcia
 * Kyle Kumar
 * Seung Hee Kim
 * Jane Tiglao
->>>>>>> FrontEndStaging
 
 ---
 
 
 ## Questions
-<<<<<<< HEAD
-
-=======
 For questions, please contact:
 
 Edwin Fame
@@ -169,4 +131,3 @@ Edwin Fame
 Email: edwinfame@yahoo.com 
 
 GitHub: https://github.com/Famesmyname
->>>>>>> FrontEndStaging
