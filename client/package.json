@@ -1,25 +1,26 @@
 {
-  "name": "art-collection-app",
+  "name": "evoke",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:3001",
   "dependencies": {
     "@apollo/client": "^3.3.7",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
+    "@mui/icons-material": "^5.8.2",
     "@mui/material": "^5.8.1",
-    "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^13.2.0",
-    "@testing-library/user-event": "^13.5.0",
-    "bootstrap": "^4.4.1",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.5.0",
+    "@testing-library/user-event": "^7.2.1",
+    "firebase": "^7.24.0",
     "graphql": "^15.4.0",
     "jwt-decode": "^2.2.0",
     "react": "^18.1.0",
     "react-bootstrap": "1.0.1",
     "react-dom": "^18.1.0",
+    "react-flip-move": "^3.0.4",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+    "react-scripts": "3.4.1",
+    "react-social-media-embed": "^2.2.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -28,10 +29,7 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "extends": "react-app"
   },
   "browserslist": {
     "production": [

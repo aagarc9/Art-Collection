@@ -7,7 +7,6 @@ export const LOGIN_USER = gql`
       user {
         _id
         username
-        email
       }
     }
   }
@@ -20,32 +19,23 @@ export const ADD_USER = gql`
       user {
         _id
         username
-        email
       }
     }
   }
 `;
 
 export const SAVE_ART = gql`
-  mutation saveART($title: String, $image: String, $description: String) {
-    saveART (title: $title, image: $image, description: $description) {
+  mutation saveART($artData: ArtInput!) {
+    saveART(artData: $artData) {
+      _id
       username
+      email
       artwork {
-        _id
-        title
+        artId
+        owner
         image
         description
-        submittedAt
-        likesCount
-        viewsCount
-        evokeSadCount
-        evokeFunnyCount
-        evokeCalmingCount
-        evokeInspiringCount
-        evokeBeautifulCount
-        evokeWholesomeCount
-        evokeMysteriousCount
-        evokeThoughtfulCount
+        title
       }
     }
   }
@@ -54,39 +44,15 @@ export const SAVE_ART = gql`
 export const REMOVE_ART = gql`
   mutation removeART($artId: ID!) {
     removeART(artId: $artId) {
+      _id
       username
+      email
       artwork {
-        _id
-        title
+        artId
+        owner
         image
         description
-      }
-    }
-  }
-`;
-
-export const ADD_COMMENT = gql`
-  mutation addComment ($artId: ID!, $commentText: String) {
-    addComment(artId: $artId, commentText: $commentText) {
-      _id
-      title
-      comments {
-        _id
-        commentText
-        commentAuthor
-        submittedAt
-      }
-    }
-  }
-`;
-
-export const REMOVE_COMMENT = gql`
-  mutation removeComment ($artId: ID!, $commentId: ID!) {
-    removeComment (artId: $artId, commentId: $commentId) {
-      title
-      comments {
-        commentText
-        commentAuthor
+        title
       }
     }
   }

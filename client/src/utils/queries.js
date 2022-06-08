@@ -1,16 +1,16 @@
 import { gql } from '@apollo/client';
 
 export const QUERY_ME = gql`
-  query me {
+  {
     me {
       _id
       username
       email
-      artwork {
-        _id
+      art {
         title
         description
         image
+        owner
         likesCount
         viewsCount
         evokeSadCount
@@ -18,49 +18,10 @@ export const QUERY_ME = gql`
         evokeCalmingCount
         evokeBeautifulCount
         evokeWholesomeCount
-        evokeMysteriousCount
+        evokeInspiringCount
         evokeThoughtfulCount
+        evokeMysteriousCount
       }
-    }
-  }
-`;
-
-export const singleArt = gql`
-  query singleArt ($artId: ID!) {
-    singleArt (artId: $artId) {
-      title
-      image
-      description
-      submittedAt
-      owner {
-        username
-      }
-      viewsCount
-      likesCount
-      evokeSadCount
-      evokeFunnyCount
-      evokeCalmingCount
-      evokeBeautifulCount
-      evokeInspiringCount
-      evokeWholesomeCount
-      evokeMysteriousCount
-      evokeThoughtfulCount
-      comments {
-        _id
-        commentText
-        commentAuthor
-      }
-    }
-  }
-`;
-
-export const multipleArt = gql`
-  query multipleArt ($username: String!) {
-    multipleArt (username: $username) {
-      _id
-      title
-      description
-      submittedAt
     }
   }
 `;

@@ -1,33 +1,48 @@
 import React from "react";
-
-
-
-import { useMutation, useQuery } from "@apollo/client";
-import { REMOVE_ART, SAVE_ART } from "../utils/mutations";
-import { QUERY_ME } from "../utils/queries";
-// import UploadForm from "../components/UploadForm"
-// import UploadArt from "../component/UploadArt"
-
-import Auth from '../utils/auth';
-
+import { useState, useEffect } from "react";
+import { db, auth } from "../../src/firebase";
+import { useParams } from "react-router-dom";
+import Post from "../components/Post";
 
 const Profile = () => {
-    const { loading, data } = useQuery(QUERY_ME);
-    const [removeART, { error }] = useMutation(REMOVE_ART);
-    const [saveART, { }] = useMutation(SAVE_ART);
+  const [userPosts, setUserPosts] = useState([])
+  const { username } = useParams()
 
-    let userData
-    userData = data?.me || {};
-    console.log(userData)
-    
-    if (loading) {
-      return <h2>LOADING...</h2>;
+  console.log(username)
+
+  useEffect(() => {
+    let pullUserPost;
+    if (username) {
+      pullUserPost = db
+        .collection("posts")
+        .where('username', '==', username)
+        .orderBy("timestamp", "desc")
+        .onSnapshot((snapshot) => {
+          setUserPosts(snapshot.docs.map((doc) => ({ id: doc.id, post: doc.data() })))
+        });
     }
+    return () => {
+      pullUserPost();
+    };
+  }, [username]);
 
     return (
+      <div className="profile__container">
     <div>
-        <h1>Hello {userData.username}</h1>
+        <h1>"Test" `{username}`</h1>
     </div>   
+    <div className="home__posts">
+              {userPosts.map(({ id, post }) => (
+                <Post
+                  key={id}
+                  postId={id}
+                  username={post.username}
+                  caption={post.caption}
+                  imageUrl={post.imageUrl}
+                />
+              ))}
+        </div>
+    </div>
     );
   };
 
