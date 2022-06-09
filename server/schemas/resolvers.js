@@ -1,12 +1,9 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Art, Comment, Evoke } = require('../models');
 const { signToken } = require('../utils/auth');
-const { GraphQLUpload, graphqlUploadExpress } = require('graphql-upload')
-const { finished } = require('stream/promises');
 
 
 const resolvers = {
-    Upload: GraphQLUpload,
 
     Query: {
         me: async (parent, args, context) => {
