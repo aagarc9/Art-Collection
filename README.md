@@ -115,7 +115,7 @@ To contribute, please email Edwin Fame.
 ## Authors
 * Edwin Fame
 * Andrew Ngo
-* Anrew Garcia
+* Andrew Garcia
 * Kyle Kumar
 * Seung Hee Kim
 * Jane Tiglao
